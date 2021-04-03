@@ -1,2 +1,2 @@
 # My Notes
-[Git](git_notes)
+[Git](git-notes)
