@@ -13,7 +13,7 @@ git diff file / git diff
 git add . / git add file / git add -p
 git diff --staged
 git commit / git commit -m "Message"
-git log / git log -p -2 / git log --stat / git log --graph --oneline # -p : --patch
+git log / git log -p -2 / git log --stat / git log --graph --oneline # -p => --patch
 git show <commit-id>
 git commit -a # Skip staging
 ```
