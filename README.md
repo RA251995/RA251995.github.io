@@ -1,2 +1,3 @@
 # My Notes
-[Git](git-notes)
+## [Git](git-notes)
+## [C Build](cbuild-notes)
