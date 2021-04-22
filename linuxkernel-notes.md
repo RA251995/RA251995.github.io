@@ -1,20 +1,25 @@
 # Linux Kernel
+
 ### Program
 - `vmlinuz-<KERNEL_VERSION>`
 - Bootloader (GRUB) loads kernel from disk to RAM
 - Has cmd line parameters
+
 ### API
 - System calls
 - Virtual file system entries
     - `proc`
     - `sys`
     - `debugfs`
+
 ### Device files
+
 ### Gatekeeper
 - Enforces privileges (capabilities)
 - Executes supervisor instructions
 - Implements security policies
 - Controls access to hardware and other resources
+
 ### Modular
 - Small (few MB)
 - Sufficient to boot to user space
@@ -25,6 +30,7 @@
 /boot/vmlinuz-<KERNEL_VERSION>
 uname -r # View current loaded kernel
 ```
+
 ---
 ### Cmds for HW Info
 ```bash
