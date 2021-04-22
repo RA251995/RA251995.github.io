@@ -61,7 +61,7 @@ setpci
 ## Kernel messages
 - `printk()` : Sent to RAM buffer and/or system console (important messages)
 - `dmesg` : Shows RAM buffer message from kernel
-- `dmesg | grep command` : Kernel boot info	
+- `dmesg | grep command` : Kernel boot info 
 - Log file (eg., `/var/log/messages`) has kernel messages and more
 - `journalctl -t kernel` : (systemd) (Stored in disk) 
 - `journalctl -t kernel -f` : Follow kernel journal messages
@@ -81,19 +81,19 @@ setpci
             - Each process has a directory with PID as it's name
             - Threads have under `task` directory
     - `/sys`
-		- Mounted at boot
-		- Kernel object info (HW info)
-		- `lspci`
-	- Device files (`/dev`)
-		- Character or block device
-			- Major number = Used by kernel to identify driver
-			- Minor number = Used by driver to identify instance
-			- Type (`c` or `b` (`ls -l`))
-		- Block device : Used to mount file systems
-		- `mknod <device_filename> c <major#> <minor_#>`
+        - Mounted at boot
+        - Kernel object info (HW info)
+        - `lspci`
+    - Device files (`/dev`)
+        - Character or block device
+            - Major number = Used by kernel to identify driver
+            - Minor number = Used by driver to identify instance
+            - Type (`c` or `b` (`ls -l`))
+        - Block device : Used to mount file systems
+        - `mknod <device_filename> c <major#> <minor_#>`
 
 ---
-## Booting	
+## Booting  
 ### GRUB Bootloader
 - After POST and BIOS
 - Installed at special location on disk
@@ -105,11 +105,11 @@ setpci
 - `info -f grub -n "simple configuration"`
 - Edit `/etc/grub.d/40_custom` -> Run `grub-mkconfig`
 - Kernel cli parameters
-	- dmesg, /proc/cmdline
-	- Kernel source tree -> `Documentation/admin-guide/kernel-parameters.txt`
-	- `rdinit` : init process in `initrd` (initial RAM disk)
-	- `init` : init process in actual root filesystem in disk
-	- `rfkill.default_state`
+    - dmesg, /proc/cmdline
+    - Kernel source tree -> `Documentation/admin-guide/kernel-parameters.txt`
+    - `rdinit` : init process in `initrd` (initial RAM disk)
+    - `init` : init process in actual root filesystem in disk
+    - `rfkill.default_state`
 
 **Services**
 - Older Linux systems -> Run level scripts in `/etc/rc.d` to start up services
@@ -138,7 +138,7 @@ modinfo  # Info from .ko file
 depmod   # Generates module config files for modprobe (/lib/modules/<kernel-version>/modules.dep)
 insmod   # Insert module
 modprobe # Loads / removes module and dependencies
-```	
+``` 
 
 ### **Building LKMs**
 ```<module-name>.c```
@@ -179,7 +179,7 @@ grep -rli <search-query> <search-folder>
 make cscope
 cscope -d
 ```
-- Use TAB to navigate; ^D to exit
+- Use `TAB` to navigate; `^D` to exit
 
 **tags**
 ```bash
@@ -209,41 +209,44 @@ vi -t <TAG>
 ---
 ### Kernel version
 - `Makefile`
-	- `KERNELVERSION`
-	- `KERNELRELEASE` : `cat /proc/version`
-	- `EXTRAVERSION` : User-defined kernel version
+    - `KERNELVERSION`
+    - `KERNELRELEASE` : `cat /proc/version`
+    - `EXTRAVERSION` : User-defined kernel version
+
 ---
 ## Configuring and building kernel
 - `make help`
 
 - `make menuconfig`
-    - < > : * - Static, M - Module, \<EMPTY\>
-	- [ ] : * - Include, \<EMPTY\>
-	- /   : Search for config options (Shows entries from Kconfig files)
+    - `< >` : `*` - Static, `M` - Module, `<EMPTY>`
+    - `[ ]` : `*` - Include, `<EMPTY>`
+    - `/`   : Search for config options (Shows entries from Kconfig files)
 - `make xconfig`
-	- Edit -> Find
-	- Option -> Show Name (Config Name)
+    - Edit -> Find
+    - Option -> Show Name (Config Name)
 
 - `.config` file
-	- Distro config file : `/boot/config*`
-	- Other platform config files : `arch/arm/configs/<platform>_defconfig`
+    - Distro config file : `/boot/config*`
+    - Other platform config files : `arch/arm/configs/<platform>_defconfig`
+
 > `.config` in C language : `autoconf.h` (*Donot edit manually*)
 
 - `make -j<#_JOBS> <bzImage|uImage|vmlinux|...>`
-	- `<bzImage|uImage|vmlinux|...>` : Bootloader dependent
-		- `bzImage` : GRUB (x86 / PC architecture)
-		- `uImage` : U-Boot
-		- `vmlinux` : Part of bootable image in ELF (*kernel proper*)
+    - `<bzImage|uImage|vmlinux|...>` : Bootloader dependent
+        - `bzImage` : GRUB (x86 / PC architecture)
+        - `uImage` : U-Boot
+        - `vmlinux` : Part of bootable image in ELF (*kernel proper*)
+
 > `System.map` : Kernel symbols; Used for kernel debugging
 
 - `make install`
-	- Installs `bzImage` into `/boot/` renaming to `vmlinuz-<KERNEL_VERSION>`
+    - Installs `bzImage` into `/boot/` renaming to `vmlinuz-<KERNEL_VERSION>`
 - Update grub config
 - Create initramfs/initrd
 
 - `make modules`
 - `make modules_install`
-	Run `depmod` and copy to `/lib/modules/<KERNEL_VERSION>/`
+    Run `depmod` and copy to `/lib/modules/<KERNEL_VERSION>/`
 
 - `make clean`
 
@@ -254,4 +257,4 @@ vi -t <TAG>
 - `make ARCH=<arm> <keystone_defconfig>`
 - `make ARCH=<arm> <uImage>`
 
-	
+    
