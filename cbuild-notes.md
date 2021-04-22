@@ -8,13 +8,16 @@ Preprocess ⟶ Compile (`gcc`) ⟶ Assemble (`as`) ⟶ Link (`ld`) ⟶ Locate
 | Preprocessed files                          | *.i       |
 | Compiled files                              | *.s       |
 | Assembled files                             | *.o       |
-| Library files	(*goes directly into linker*) | *.a       |
-### GNU Toolchain
+| Library files (*goes directly into linker*) | *.a       |
+
+---
+### **GNU Toolchain**
 #### Naming
 `<ARCH>-<VENDOR>-<OS>-<ABI>-<TOOL>`  
 Examples: 
 - `arm-none-eabi-gcc`  
-- `arm-linux-gnueabi-as`  
+- `arm-linux-gnueabi-as` 
+
 #### **Useful GNU tools** (*binutils*)
 
 | Tool      | Use                                                 |
@@ -26,51 +29,52 @@ Examples:
 | `readelf` | Displays info from elf files                        |
 | `gdb`     | GNU debugger                                        |
 
+---
 #### **General gcc options**
 ```bash
-	-c			# Compile and assemble files; Donot link
-	-o <FILE>		# Compile, assemble and link to <FILE>
-	-g			# Generate debugging information in executable
-	-Wall			# Enable all warning messages
-	-Werror			# Treat all warnings as errors
-	-I<DIR>			# Include <DIR> to look for header files
-	-ansi-std=<STD>		# Specify <STD> to use (c89, c99, ...)
-	-v			# Verbose output
-	-S			# Compile only; Donot assemble and link
-	-E			# Preprocess only; Donot compile, assemble and link
-	-D<MACRO-NAME>		# Complie time switch
+    -c                  # Compile and assemble files; Donot link
+    -o <FILE>           # Compile, assemble and link to <FILE>
+    -g                  # Generate debugging information in executable
+    -Wall               # Enable all warning messages
+    -Werror             # Treat all warnings as errors
+    -I<DIR>             # Include <DIR> to look for header files
+    -ansi-std=<STD>     # Specify <STD> to use (c89, c99, ...)
+    -v                  # Verbose output
+    -S                  # Compile only; Donot assemble and link
+    -E                  # Preprocess only; Donot compile, assemble and link
+    -D<MACRO-NAME>      # Complie time switch
 ```
 #### Linker flags
 ```bash
-    -T <SCRIPT>	 		# Linker <SCRIPT>
-	-l <LIB>		# Link with <LIB>		
-	-L <DIR>		# Include library <DIR>
-	-map <FILE>		# Output memory map <FILE> from result of linking
-	-O<#>			# Optimization level (<#> = 0,1,2,3)
-	-Os			# Optimizate for memory size
-	-z stacksize=<SIZE>	# Amount of stack space to reserve
-	-shared			# Produce shared library (dynamically linked library)
-	-Wl, <OPTION>		# Pass <OPTION> to linker from compiler
-	-Xlinker <OPTION>	# Pass <OPTION> to linker from compiler
+    -T <SCRIPT>         # Linker <SCRIPT>
+    -l <LIB>            # Link with <LIB>       
+    -L <DIR>            # Include library <DIR>
+    -map <FILE>         # Output memory map <FILE> from result of linking
+    -O<#>               # Optimization level (<#> = 0,1,2,3)
+    -Os                 # Optimizate for memory size
+    -z stacksize=<SIZE> # Amount of stack space to reserve
+    -shared             # Produce shared library (dynamically linked library)
+    -Wl, <OPTION>       # Pass <OPTION> to linker from compiler
+    -Xlinker <OPTION>   # Pass <OPTION> to linker from compiler
 ```
 #### Architecture specific gcc options
 ```bash
-	-mcpu=<NAME>		# Target ARM processor and architecture (cortex-m0plus, ...)
-	-march=<NAME>		# Target ARM architecture (armv7-m, thumb, ...)
-	-mtune=<NAME>		# Target ARM processor (cortex-m0plus, ...)
-	-mthumb			# Generate code in Thumb states (ISA)
-	-marm			# Generate code in ARM state (ISA)
-	-mthumb-interwork	# Generate code that support calls between ARM and Thumb (ISA)
-	-mlitte-endian		# Generate code for little endian mode
-	-mbig-endian		# Generate code for big endian mode
+    -mcpu=<NAME>        # Target ARM processor and architecture (cortex-m0plus, ...)
+    -march=<NAME>       # Target ARM architecture (armv7-m, thumb, ...)
+    -mtune=<NAME>       # Target ARM processor (cortex-m0plus, ...)
+    -mthumb             # Generate code in Thumb states (ISA)
+    -marm               # Generate code in ARM state (ISA)
+    -mthumb-interwork   # Generate code that support calls between ARM and Thumb (ISA)
+    -mlitte-endian      # Generate code for little endian mode
+    -mbig-endian        # Generate code for big endian mode
 ```
 ## Preprocessor Directives
 ```c
-	#define, #undef				// Constants, features (booleans), Macro functions */
-	#ifdef, #ifndef, #else, #elif, #endif	// Conditional compilation
-	#include				// Include files
-	#error, #warning			// Compiler errors and warnings
-	#pragma					// Compiler instructions
+    #define, #undef                         // Constants, features (booleans), Macro functions */
+    #ifdef, #ifndef, #else, #elif, #endif   // Conditional compilation
+    #include                                // Include files
+    #error, #warning                        // Compiler errors and warnings
+    #pragma                                 // Compiler instructions
 ```
 ### Include guards
 ```c
@@ -79,88 +83,91 @@ Examples:
 ```
 ---
 ### Libraries
-- **Static**	: Create using GNU tool ar
-- **Shared** 	: Preinstalled onto target  
+- **Static**    : Create using GNU tool ar
+- **Shared**    : Preinstalled onto target  
+
 ---
 ## Make
 
 | File name               | Description                       |
 |-------------------------|-----------------------------------|
-|*.d, *.dep		  | Dependency file generated by make |
+|*.d, *.dep       | Dependency file generated by make |
 |*.mk, makefile, Makefile | Makefile                          |
 
-### Makefile	
+### Makefile    
 ```makefile
-	target: prerequisite1, prerequisite2, prerequisite3
-		command1
-		command2
+    target: prerequisite1, prerequisite2, prerequisite3
+        command1
+        command2
 ```
 ```makefile
-    # 					# Comment
-    include <makefile>	# Include another <makefile>
-    \					# Line continuation
-    $(<VAR>)			# Access variable <VAR>	
+    #                   # Comment
+    include <makefile>  # Include another <makefile>
+    \                   # Line continuation
+    $(<VAR>)            # Access variable <VAR> 
 ```
 #### Variables
-- Recursively expanded variables (**=**)	: Expands whenever used (Eg.: `CSTD=c89`)
-- Simply expanded variables (**:=**) 		: Expands once at time of definition (Eg: `ARCH:=$(shell arch)`)
+- Recursively expanded variables (**=**)    : Expands whenever used (Eg.: `CSTD=c89`)
+- Simply expanded variables (**:=**)        : Expands once at time of definition (Eg: `ARCH:=$(shell arch)`)
 
 #### Automatic Variables : *Variables in a receipe with a scope*
 ```makefile
-	$@ # Target
+    $@ # Target
     $^ # All prerequisites
     $< # First prerequisite
-```	
+``` 
+
+---
 #### Pattern matching
 ```makefile
     % # Pattern matching operator
 ```
-**Example**
+Example
 ```makefile
-%.o : %.c
-	gcc -c $^ -o $@
+    %.o : %.c
+        gcc -c $^ -o $@
 # Example Result
-main.o : main.c
-	gcc -c main.c -o main.o
+    main.o : main.c
+        gcc -c main.c -o main.o
 ```
 For every *.c file, associate a .o with same filename  
 ```makefile
-OBJS:=$(SRCS:.c=.o)
+    OBJS:=$(SRCS:.c=.o)
 # Example Result
-SRCS:=	main.c \
-        myfile.c
-OBJS:=	main.o \
-        myfile.o
+    SRCS:=  main.c \
+            myfile.c
+    OBJS:=  main.o \
+            myfile.o
 ```
 ---
 ```makefile
-	.PHONY: <all|clean|debug|...> # To make sure that make doesnot confuse a target name with a file
+    .PHONY: <all|clean|debug|...> # To make sure that make doesnot confuse a target name with a file
 ```
 #### **Functions & Dynamic variables**
 ```makefile
-		$(shell <cmd>)
-		ifeq ($(shell uname -s), 'Linux')
-			CC=gcc
-		endif
+    $(shell <cmd>)
+    ifeq ($(shell uname -s), 'Linux')
+        CC=gcc
+    endif
 ```
 **Overiding variables**
 ```bash
     make <target> <var>=<val>
-```	
+``` 
 **Special variables**  
 
 | Variable   | Meaning                   |
 |------------|---------------------------|
-| `CC`	     | Compiler                  |  
-| `CPP`	     | Preprocessor program      |
-| `AS`	     | Assembler program         |
-| `LD`	     | Linker                    |
+| `CC`       | Compiler                  |  
+| `CPP`      | Preprocessor program      |
+| `AS`       | Assembler program         |
+| `LD`       | Linker                    |
 | `CFLAGS`   | C program flags           |
 | `CPPFLAGS` | C preprocessor flags      |
 | `ASFLAGS`  | Assembler flags           |
 | `LDFLAGS`  | C program linker flags    | 
 | `LDLIBS`   | Extra flags for libraries | 
-	
+    
 ## Memory
 #### Flash Memory
 - Read/Write page
