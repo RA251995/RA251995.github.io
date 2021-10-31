@@ -45,9 +45,7 @@
 - `find <folder> -name <file>`
 - `grep -rn <folder> -e "<regex>"`
 - `whereis <binary>`
-### Pipes 
-- `|`
-- `tee`
+### Pipe (`|`) and `tee` 
 ### Filter
 - `sort`, `wc`, `head`, `tail`, `grep`, `xargs`
 ### Echo
