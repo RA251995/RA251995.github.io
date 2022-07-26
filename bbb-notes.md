@@ -11,12 +11,14 @@
 - Reset Button - S1
 
 ### Boot mode
+
 | SYSBOOT[4:0] | Boot Order                                | Remarks                     |
 | ------------ | ----------------------------------------- | --------------------------- |
 | 11100        | MMC1 (eMMC), MMC0 (SD card), UART0, UART1 | Default                     |
 | 11000        | SPI0, MMC0 (SD card), USB0, UART0         | S2 Pressed / P8 43 Grounded |
 
 ### UART0 Header - J1
+
 | Pin | BBB Signal |
 | --- | ---------- |
 | 1   | GND        |
@@ -85,6 +87,7 @@ imi ${loadaddr}
 [Custom RFS for Beaglebone Black using Busybox](https://embedjournal.com/custom-rfs-beaglebone-black/)
 
 ## SD Card Partitioning
+
 | File System | Label  | Flags |
 | ----------- | ------ | ----- |
 | fat16       | BOOT   | boot  |
@@ -165,8 +168,9 @@ run boot_tftp
 ```
 
 ## NFS
+
 |        | IP Address   | Interface |
-|--------| ------------ | --------- |
+| ------ | ------------ | --------- |
 | Ubuntu | 192.168.3.1  | enp7s0    |
 | BBB    | 192.168.3.10 | eth0      |
 ### Disable DHCP Server
@@ -200,4 +204,5 @@ setenv boot_tftp_nfs run set_ip\; run load_tftp\; run set_nfs_bootargs\; bootz $
 ```uboot
 run boot_tftp_nfs
 ```
+
 
