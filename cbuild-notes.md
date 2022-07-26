@@ -20,14 +20,20 @@ Examples:
 
 #### **Useful GNU tools** (*binutils*)
 
-| Tool      | Use                                                 |
-|-----------|-----------------------------------------------------|
-| `size`    | Lists section sizes for object and executable files |
-| `nm`      | List symbols from object files                      |
-| `objcopy` | Copies and translates object files                  |
-| `objdump` | Displays info from object files                     |
-| `readelf` | Displays info from elf files                        |
-| `gdb`     | GNU debugger                                        |
+| Tool      | Use                                                                       |
+|-----------|---------------------------------------------------------------------------|
+| `size`    | Lists section sizes for object and executable files                       |
+| `nm`      | List symbols from object files                                            |
+| `objcopy` | Copies and translates object files                                        |
+| `objdump` | Displays info from object files (Disassemble: `objdump -d <object-file>`) |
+| `readelf` | Displays info from elf files                                              |
+| `gdb`     | GNU debugger                                                              |
+
+#### **Other useful tools**
+
+| Tool      | Use                             |
+|-----------|---------------------------------|
+| `ldd`     | Pint shared object dependencies |
 
 ---
 #### **General gcc options**

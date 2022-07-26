@@ -50,7 +50,6 @@
 - `sort`, `wc`, `head`, `tail`, `grep`, `xargs`
 ### Echo
 - `echo -e "<string-with-escape-characters>"`
-- `echo $?` : Exit status
 ### Diff
 - `diff -y -W<#> <file-1> <file-2>` 
 ### Tar
@@ -66,6 +65,13 @@
 - `Ctrl + L` : Clear terminal
 - `Ctrl + A` : Go to start
 - `Ctrl + E` : Go to end
+- `Ctrl + R` : Search commands history
+- `Ctrl + U` : Clear backward till start of line
+- `Ctrl + K` : Clear till end of line
 ## Output Redirection
 - `>` : Write
 - `>>` : Append
+## Bash Variables
+- `$?` - exit status
+- `$#` - number of positional arguments
+- `$<#>` - argument at position <#>
