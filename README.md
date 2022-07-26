@@ -4,3 +4,4 @@
 ## [Linux Terminal](terminal-notes.md)
 ## [Linux Kernel](linuxkernel-notes)
 ## [Linux Device Drivers](ldd-notes.md)
+## [BeagleBone Black](bbb-notes.md)
