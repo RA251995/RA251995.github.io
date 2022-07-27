@@ -125,7 +125,7 @@ sudo tar -C /media/ubuntu/ROOTFS/ -xf rootfs.tar
 sudo apt install isc-dhcp-server
 ```
 ### Configure
-/etc/dhcp/dhcpd.conf
+`/etc/dhcp/dhcpd.conf`
 ```
 default-lease-time 3600; 
 max-lease-time 7200;
@@ -135,7 +135,7 @@ subnet 192.168.3.0 netmask 255.255.255.0 {
         range   192.168.3.10   192.168.3.100;
 }
 ```
-/etc/default/isc-dhcp-server
+`/etc/default/isc-dhcp-server`
 ```
 INTERFACESv4="enp7s0"
 ```
@@ -153,7 +153,7 @@ sudo systemctl restart isc-dhcp-server
 sudo apt-get install tftpd-hpa
 ```
 Config file:
-/etc/default/tftpd-hpa
+`/etc/default/tftpd-hpa`
 
 ### U-Boot Environment Setup
 ```uboot
@@ -184,7 +184,7 @@ sudo apt-get install nfs-kernel-server nfs-common portmap
 sudo mkdir /srv/nfs/bbb
 sudo tar -C /srv/nfs/bbb -xzf rootfs.tar
 ```
-/etc/exports
+`/etc/exports`
 ```
 /srv/nfs/bbb 192.168.3.10(rw,sync,no_root_squash,no_subtree_check)
 ```
