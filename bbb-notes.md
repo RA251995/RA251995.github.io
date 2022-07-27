@@ -173,6 +173,7 @@ run boot_tftp
 | ------ | ------------ | --------- |
 | Ubuntu | 192.168.3.1  | enp7s0    |
 | BBB    | 192.168.3.10 | eth0      |
+
 ### Disable DHCP Server
 ```bash
 sudo systemctl stop isc-dhcp-server
