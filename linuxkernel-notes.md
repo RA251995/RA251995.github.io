@@ -112,7 +112,7 @@ modprobe # Loads / removes module and dependencies
 ``` 
 
 ### **Building LKMs**
-```<module-name>.c```
+`<module-name>.c`
 ```c
 #include <linux/init.h>
 #include <linux/module.h>
@@ -333,7 +333,7 @@ Common runlevel puposes:
     - If `root` is not defined in kernel command-line parameters,
         - Runs `linuxrc` in ramdisk
         - Umounts `initrd` and mounts at `/initrd` (if `/initrd` exists in real root device)
-- **`initramfs**
+- **`initramfs`**
     - `cpio` archive
     - Integrated into kernel source tree (`usr/`)
     - Default contents specified in `usr/default_cpio_list`
