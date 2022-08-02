@@ -109,7 +109,20 @@ make menuconfig
 make
 ```
 
-#### Copy images and root FS to SD card
+### Configure Linux kernel
+```bash
+make linux-menuconfig
+mkdir custom_linux_config/
+cp output/build/linux-custom/.config custom_linux_config
+make menuconfig
+```
+`BR2_LINUX_KERNEL_USE_CUSTOM_CONFIG=y`
+`BR2_LINUX_KERNEL_CUSTOM_CONFIG_FILE=/home/ubuntu/workspace/buildroot/buildroot-2022.02.3/custom_linux_config/.config`
+```bash
+make
+```
+
+### Copy images and root FS to SD card
 ```bash
 cd output/images
 cp MLO /media/ubuntu/BOOT/
@@ -117,6 +130,13 @@ cp u-boot.img /media/ubuntu/BOOT/
 cp zImage /media/ubuntu/BOOT/
 cp am335x-boneblack.dtb /media/ubuntu/BOOT/
 sudo tar -C /media/ubuntu/ROOTFS/ -xf rootfs.tar
+```
+
+### Custom loadable kernel module build
+```bash
+cd ~/workspace/buildroot/custom-modules
+export PATH=$PATH:/home/ubuntu/workspace/buildroot/buildroot-2022.02.3/output/host/bin
+make ARCH=arm CROSS_COMPILE=arm-buildroot-linux-uclibcgnueabihf- -C /home/ubuntu/workspace/buildroot/buildroot-2022.02.3/output/build/linux-custom M=$PWD modules
 ```
 
 ## Ubuntu DHCP Server Setup
@@ -183,7 +203,7 @@ ifconfig enp7s0 192.168.3.1
 ```bash
 sudo apt-get install nfs-kernel-server nfs-common portmap
 sudo mkdir /srv/nfs/bbb
-sudo tar -C /srv/nfs/bbb -xzf rootfs.tar
+sudo tar -C /srv/nfs/bbb -xf rootfs.tar
 ```
 `/etc/exports`
 ```
@@ -205,5 +225,3 @@ setenv boot_tftp_nfs run set_ip\; run load_tftp\; run set_nfs_bootargs\; bootz $
 ```uboot
 run boot_tftp_nfs
 ```
-
-
