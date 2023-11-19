@@ -59,16 +59,19 @@ echo <trigger> > /sys/class/leds/beaglebone:green:user<0-3>/trigger
 | BBB    |enxe415f6f97e47    |
 
 #### Configure firewall rules (Ubuntu)
+*Not persistent across reboots*
 ```bash
 sudo iptables --table nat --append POSTROUTING --out-interface wlp0s20f3 -j MASQUERADE
 sudo iptables --append FORWARD --in-interface enxe415f6f97e47 -j ACCEPT
 ```
 #### Turn on IP forwarding (Ubuntu)
+*Not persistent across reboots*
 ```bash
 sudo sh -c "echo 1 > /proc/sys/net/ipv4/ip_forward"
 ```
 
 #### (BBB)
+*Not persistent across reboots*
 ```bash
 sudo route add default gw 192.168.6.1
 sudo sh -c "echo 'nameserver 8.8.8.8' >> /etc/resolv.conf"
@@ -176,7 +179,12 @@ max-lease-time 7200;
 authoritative;
 
 subnet 192.168.3.0 netmask 255.255.255.0 {
-        range   192.168.3.10   192.168.3.100;
+    range   192.168.3.100   192.168.3.200;
+}
+
+host archmachine {
+    hardware    ethernet    <client-mac-address>;
+    fixed-address    192.168.3.10;
 }
 ```
 `/etc/default/isc-dhcp-server`
