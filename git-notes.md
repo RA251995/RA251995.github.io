@@ -10,7 +10,7 @@ git config -l
 git init
 git status
 git diff file / git diff
-git add . / git add file / git add -p
+git add . / git add file / git add -p # Interactively select patches
 git diff --staged
 git commit / git commit -m "Message"
 git log / git log -p -2 / git log --stat / git log --graph --oneline # -p => --patch
@@ -32,7 +32,7 @@ git commit -m "Added gitignore file"
 git checkout file # Before staging (-p)
 git reset HEAD # After staging (-p)
 git commit --amend # Overwrite last commit (Don't use online)
-git revert HEAD / git revert <commit-id>
+git revert HEAD / git revert <commit-id> # Preserves commit history
 ```
 ## Branches
 ```bash
@@ -63,7 +63,7 @@ git push -u origin <branch-name> # Push new branch to remote
 ### Rebase
 ```bash
 git rebase master
-git rebase --continue
+git rebase --continue # To continue after resolving conflicts
 git push --delete origin <branch-name>
 
 git rebase -i master # -> squash
