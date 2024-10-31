@@ -1,5 +1,6 @@
 # My Notes
 ## [Git](git-notes)
+## [C Language](c-notes)
 ## [C Build](cbuild-notes)
 ## [Linux Terminal](terminal-notes.md)
 ## [Linux Kernel](linuxkernel-notes)
