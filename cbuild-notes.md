@@ -74,6 +74,12 @@ Examples:
     -mlitte-endian      # Generate code for little endian mode
     -mbig-endian        # Generate code for big endian mode
 ```
+#### Bare metal options
+```bash
+    -nostdlib           # Do not use the standard system startup files or libraries when linking
+    -nostartfiles       # Do not use standard system startup files when linking
+    -ffreestanding      # Assert that compilation targets a freestanding environment
+```
 ## Preprocessor Directives
 ```c
     #define, #undef                         // Constants, features (booleans), Macro functions */
