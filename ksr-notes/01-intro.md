@@ -71,7 +71,7 @@ servant is -------
 
 ## Question 6
 The rules in part II of KSR is
-Not applicable to -------
+NOT applicable to -------
 - A. Part time contingent employees
 - B. All India service officer
 - C. All employees who entered service on or after 1/4/13
@@ -109,7 +109,7 @@ on or after -------
 </details>
 
 ## Question 9
-Kerala govt: makes rule further
+Kerala govt. makes rule further
 to amend KSRs in exercise of
 powers conferred by -------
 - A. Manual of office procedure
@@ -122,7 +122,7 @@ powers conferred by -------
 </details>
 
 ## Question 10
-Govt: have issued KSR under
+Govt. have issued KSR under
 proviso to article ------- of
 constitution of India
 - A. 309
@@ -135,10 +135,10 @@ constitution of India
 </details>
 
 ## Question 11
-Amount paid to govt: officers
+Amount paid to govt. officers
 for attending election duty is
 called as -----
-- A. compensatory allowance
+- A. Compensatory allowance
 - B. Fee
 - C. Honorarium
 - D. Special pay
