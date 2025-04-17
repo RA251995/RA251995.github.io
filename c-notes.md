@@ -43,3 +43,6 @@
 32. signed
 
 > ``if`` block is executed on non-zero result, `else` block on zero result
+
+> **declaration**: Let *C* know that the entity exists, somewhere \
+> **definition**: Associate memory
